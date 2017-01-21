@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Examples of createElement, appendChild, insertBefore, and removeChild</title>
+	<script type="text/javascript">
+		function left(){
+		
+		document.getElementById('outputDiv').innerHTML = "Oh no! You run into a verocious giant python!";
+		
+		btn = document.createElement("input");
+		btn.type = "button";
+		btn.value = "Fight!";
+		btn.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "You face the ferocious serpent! However, you were vastly underprepared and brought no weapons! The snake eats you whole and you now live in your new snake home.";
+				});
+		
+		btn2 = document.createElement("input");
+		btn2.type = "button";
+		btn2.value = "Run Away";
+		btn2.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "You safely retreat! You live for another day!";
+				});
+		
+		document.getElementById('outputDiv').innerHTML = "Oh no! You run into a verocious giant python!";
+		
+		var placeHolder = document.getElementById("placeHolder");
+		document.body.appendChild(btn);
+		document.body.appendChild(btn2);    
+		}
+		
+		function right(){
+		var list = new Array();
+		
+			document.getElementById('outputDiv').innerHTML = "You find yourself in a marketplace and they are having a great sale! Start shopping!";
+			
+			btn = document.createElement("input");
+			btn.type = "button";
+			btn.value = "Add Carrots";
+			btn.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Carrots");
+					newItem.appendChild(textnode);
+
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+			btn2 = document.createElement("input");
+			btn2.type = "button";
+			btn2.value = "Add Milk";
+			btn2.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Milk");
+					newItem.appendChild(textnode);
+
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+			btn3 = document.createElement("input");
+			btn3.type = "button";
+			btn3.value = "Add Playstation 4";
+			btn3.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Playstation 4");
+					newItem.appendChild(textnode);
+
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+					
+			btn4 = document.createElement("input");
+			btn4.type = "button";
+			btn4.value = "Remove Last Item Added";
+			btn4.addEventListener ("click", function() {
+					var list = document.getElementById("shoppingList");
+					list.removeChild(list.childNodes[0]);
+					});
+
+			document.body.appendChild(btn);
+			document.body.appendChild(btn2);
+			document.body.appendChild(btn3);
+			document.body.appendChild(btn4);
+					
+			}
+	
+	</script>
+</head>
+
+<body>
+	<header>
+		<h1>CIT 261 - Kailey Dilworth</h1>
+		<h2>Application Development - createElement, appendChild, insertBefore, and removeChild</h2>
+		</header>
+		
+		<h2>DOM Create Element:</h2>
+		<div id="outputDiv">
+		<p>Choose your own adventure! Would you like to go left or right?<p>
+		<input type="button" value="Left" onclick="left()" /><input type="button" value="Right" onclick="right()" />
+		<div id="placeHolder"></div>
+		</div>
+		<br/>
+		<ul id="shoppingList">
+	
+		</ul>
+		
+	
+</body>
+
+</html>
