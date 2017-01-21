@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Example of Conditional Statement</title>
+	
+	<script type="text/javascript">
+		function teamColor(){
+			var name = document.getElementById('name').value;
+			var age = parseFloat(document.getElementById('age').value);
+			if (age <= 10){
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Blue Team!";
+			}else if (age > 10 && age <= 30) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Yellow Team!";
+			}else if (age > 30 && age <= 50) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Red Team!";
+			}else if (age > 50) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Green Team!";
+			}
+		
+		}
+		
+	</script>
+	
+</head>
+
+<body>
+	<header>
+		<h1>CIT 261 - Kailey Dilworth</h1>
+		<h2>Application Development - Example of Conditional Statement</h2>
+	</header>
+		<h2>Conditional Statements:</h2>
+		<p>Enter your name and age and be assigned a color.</p>
+		<p>Name: <input type="text" id="name"> Age: <input type="text" id="age"> </p>
+		<button type="button" onclick="teamColor()">Get Team Color</button>
+		<div id="outputDiv4"></div>
+	<footer>
+		<p>Copyright 2017 - Kailey Dilworth<p>
+	<footer>
+
+</body>
+
+</html>
