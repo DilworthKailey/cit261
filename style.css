@@ -1,0 +1,71 @@
+html,
+
+body {
+	background-color:#62a8ea;
+	margin: 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.background {
+    background-color: white;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: #103b7f;
+    padding: 10px;
+    padding-right: 10px;
+    margin: auto;
+	max-width: 900px;
+}
+header a{
+	color: white;
+}
+a {
+	text-decoration: none;
+	padding: 10px;
+	color: #4e77ba;
+	margin: auto;
+	font-size: 20px;
+}
+a:hover{
+	color: #103b7f;
+}
+header{
+	color: white;
+	text-align: center;
+}
+h3{
+	color: #4e77ba;
+	padding-left: 15px;
+}
+footer{
+	background-color: white;
+	text-align: right;
+	margin: auto;
+	max-width: 900px;
+	color: #103b7f;
+}
+
+.arrayBox{
+	width: 50px;
+}
+
+.spoilerbutton {
+    display:block;
+    margin:3px 25px;
+    font-size: 14px;
+}
+.spoiler {
+    overflow:hidden;
+    background: #f5f5f5;
+}
+.spoiler > div {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: margin 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: margin 0.2s ease;
+}
+.spoilerbutton[value="Show Code"] + .spoiler > div {
+    margin-top:-100%;
+}
+.spoilerbutton[value="Hide"] + .spoiler {
+    padding:5px;
+} 

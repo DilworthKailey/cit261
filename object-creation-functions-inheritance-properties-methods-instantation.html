@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Object Creation</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		var totalMembers = 0;
+		var member1;
+		var member2;
+		var member3;
+		var member4;
+		var chosen;
+		
+		function character(){
+			this.name = document.getElementById('name').value;
+			this.gender = document.getElementById('gender').value;
+			this.class = document.getElementById('class').value;
+			this.personality = document.getElementById('personality').value;
+			this.profile =	function(){ 
+								return  "Name: " + this.name + "<br>" + 
+							   "Gender: " + this.gender + "<br>" + 
+							   "Class: " + this.class + "<br>" + 			
+							   "Personality: " + this.personality + "<br>" +
+							   "Eye Color: " + this.eyecolor + "<br>";
+							   }
+			this.changeName = function (name) {
+									this.name = name;
+								}
+		}
+		
+		function addChar (){
+			totalMembers += 1;
+			 
+			if (totalMembers == 1){
+				member1 = new character();
+			}
+			else if(totalMembers == 2){
+				member2 = new character();
+			}
+			else if(totalMembers == 3){
+				member3 = new character();
+			}
+			else if(totalMembers == 4){
+				member4 = new character();
+			}
+			else if(totalMembers > 4){
+				document.getElementById('outputDiv2').innerHTML = "You have reached the Maximum Amount of Members."
+			}
+			document.getElementById('name').value=''; 
+			document.getElementById('gender').value=''; 
+			document.getElementById('class').value=''; 
+			document.getElementById('personality').value='';
+			
+		}
+		
+		function members(number){
+			chosen = number;
+			if (number == 1 && totalMembers > 0){
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (number == 2 && totalMembers > 1){
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (number == 3 && totalMembers > 2){
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (number == 4 && totalMembers > 3){
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			} else{
+				document.getElementById('outputDiv').innerHTML = "You have not yet set this member of your party.";
+			}
+		}
+		
+		function eyeColor(){
+			if (chosen == 1 && totalMembers > 0) {
+				member1.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (chosen == 2 && totalMembers > 1) {
+				member2.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (chosen == 3 && totalMembers > 2) {
+				member3.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (chosen == 4 && totalMembers > 3) {
+				member4.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+			else{
+				document.getElementById('outputDiv2').innerHTML = "You need to select your existing party member first!";
+			}
+		}
+		
+		function changeName(){
+			if (chosen == 1 && totalMembers > 0) {
+				member1.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (chosen == 2 && totalMembers > 1) {
+				member2.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (chosen == 3 && totalMembers > 2) {
+				member3.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (chosen == 4 && totalMembers > 3) {
+				member4.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+		}
+		
+		function onward() {
+			if (totalMembers < 4){
+				document.getElementById('outputDiv3').innerHTML = "You need to create four party members to start the adventure.";
+			}else{
+				document.getElementById('outputDiv3').innerHTML = "Your team comes across a horrible beast! Everyone was eaten alive. Too bad. Guess putting together a team wasn't worth all the work."
+			}
+		
+		}
+		
+		
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="index.html">
+		<h1>CIT 261 - Kailey Dilworth</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Object Creation Functions, Inheritance, Properties, Methods, and Instantation</h2>
+		<p>Let's create a party of adventurers to aid you in your quest! You can have up to four.</p>
+		<input type="text" id="name" placeholder="Name"></input></br>
+		<input type="text" id="gender" placeholder="Gender"></input></br>
+		<input type="text" id="class" placeholder="Class"></input></br>
+		<input type="text" id="personality" placeholder="Personality"></input></br>
+		<button onclick="addChar()">Add Party Member</button><div id="outputDiv2"></div><br>
+		<button onclick="members(1)">Member 1</button><button onclick="members(2)">Member 2</button><button onclick="members(3)">Member 3</button><button onclick="members(4)">Member 4</button>
+		
+		<div id="outputDiv"></div>
+		
+		<p>Oops! Let's not forget eye color! First, choose a member of your team, then enter their eye color and press the button. This will add the ".eyecolor" property.</p>
+		<input type="text" id="eyeColor" placeholder="Eye Color"></input><button onclick="eyeColor()">Set Eye Color</button>
+		
+		<p>Did you give everyone the right name? Go ahead and change their name if you like. Just select which party member first then enter their new name. After doing so, their profile should show their new name.</p>
+		<input type="text" id="newName" placeholder="Name"></input><button onclick="changeName()">Change Name</button>
+		<p>Ready for your adventure?</p>
+		<button onclick="onward()">Let's Go!</button>
+		<div id="outputDiv3"></div>
+
+	<footer>
+		<p>Copyright 2017 - Kailey Dilworth</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>
