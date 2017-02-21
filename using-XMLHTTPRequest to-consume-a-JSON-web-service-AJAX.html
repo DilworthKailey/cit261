@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
 	
 	<script type="text/javascript">
-		var xhttp = new XMLHttpRequest();
 		
 		function getObject(){
 			var xmlhttp = new XMLHttpRequest();
@@ -37,32 +36,9 @@
 			document.getElementById('objectOutput').innerHTML = output;
 		
 		}
+
 			
-		function process(){
-			if (xhttp.readyState == 0 || xhttp.readyState == 4){
-				console = encodeURIComponent(document.getElementById('reviewInput').value);
-				
-				xhttp.open("GET", "/object_string/consoles.php?console=" + console, true);
-				
-				xhttp.onreadystatechange = handleServerResponse;
-				
-				xhttp.send();
-			} else{
-				setTimeout('process()', 1000);
-			}
-		}
 		
-		function handleServerResponse(){
-			if (xhttp.readyState == 4 && xhttp.status == 200){
-				xmlResponse = xhttp.responseXML;
-				xmlDocumentElement = xmlResponse.documentElement;
-				message = xmlDocumentElement.firstChild.data;
-				
-				document.getElementById("reviewOutput").innerHTMl = '<br><span \n\ style="color:purple">' + message + '</span>';
-				
-				setTimeout("process()", 1000);
-			}
-		}
 		
 	</script>
 	
@@ -88,30 +64,6 @@
 		<button type="button" onclick="getObject()">See Details</button>
 		<button onclick="clearObjectOutput()">Clear</button>
 		<div id="objectOutput"></div>
-		<h3>My Consoles:</h3>
-		<select id='reviewInput'>
-			<option></option>
-			<option>NES</option>
-			<option>SNES</option>
-			<option>Nintendo 64</option>
-			<option>Gamecube</option>
-			<option>Wii</option>
-			<option>Wii U</option>
-			<option>Switch</option>
-			<option>Playstation 1</option>
-			<option>Playstation 2</option>
-			<option>Playstation 3</option>
-			<option>Playstation 4</option>
-			<option>Xbox</option>
-			<option>Xbox 360</option>
-			<option>Xbox One</option>
-			<option>Gameboy Color</option>
-			<option>Gameboy Advanced</option>
-			<option>3DS</option>
-			<option>PSP</option>
-			<option>PSVita</option>
-		</select>
-		<div id="reviewOutput"></div>
 
 	<footer>
 		<p>Copyright 2017 - Kailey Dilworth</p>
