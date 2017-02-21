@@ -37,7 +37,21 @@
 		
 		}
 
-			
+		function newText() {
+			var xhttp;
+			if (window.XMLHttpRequest) {
+				xhttp = new XMLHttpRequest();
+			} else {
+					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "/object_string/new-text.txt", true);
+			xhttp.send();
+		}	
 		
 		
 	</script>
@@ -64,6 +78,10 @@
 		<button type="button" onclick="getObject()">See Details</button>
 		<button onclick="clearObjectOutput()">Clear</button>
 		<div id="objectOutput"></div>
+		
+		<p id="demo">Press the button for a secret message using a seperate .txt file</p>
+
+		<button type="button" onclick="newText()">Change Content</button>
 
 	<footer>
 		<p>Copyright 2017 - Kailey Dilworth</p>
