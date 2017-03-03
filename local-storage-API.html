@@ -9,15 +9,10 @@
 				var friendsList = new Array();
 		function addFriend() {
 			friendsList.push(document.getElementById('names').value);
-			if(typeof(Storage) !== "undefined") {
-				
+			
 					localStorage.setItem("friends", JSON.stringify(friendsList));
 					document.getElementById('names').value='';
 					document.getElementById("outputDiv").innerHTML = "Your friend's names are: " + friendsList;
-
-			} else {
-				document.getElementById("outputDiv").innerHTML = "Sorry, your browser does not support web storage...";
-			}
 		}
 		
 		function reset(){
@@ -106,6 +101,32 @@
 					"Favorite Color: " + profileText.color + "<br>";
 			}
 			
+			function styleIt(){
+				var styleArray = {
+					"color":document.getElementById('boxColor').value,
+					"width":document.getElementById('width').value + "px",
+					"height":document.getElementById('height').value + "px",
+					"diameter":document.getElementById('rounded').value + "px",
+					};
+					
+				document.getElementById("storageStyle").style.background = styleArray["color"];
+				document.getElementById("storageStyle").style.width = styleArray["width"];
+				document.getElementById("storageStyle").style.height = styleArray["height"];
+				document.getElementById("storageStyle").style.borderRadius = styleArray["diameter"];
+				
+				localStorage.setItem("style", JSON.stringify(styleArray));
+				}
+				
+			function rememberStyle(){
+				var retrieveStyle = localStorage.getItem("style");
+				var returnedStyle = JSON.parse(retrieveStyle);
+				
+				document.getElementById("storageStyle").style.background = returnedStyle.color;
+				document.getElementById("storageStyle").style.width = returnedStyle.width;
+				document.getElementById("storageStyle").style.height = returnedStyle.height;
+				document.getElementById("storageStyle").style.borderRadius = returnedStyle.diameter;
+			}
+			
 	</script>
 	
 </head>
@@ -153,7 +174,15 @@
 		<input type="text" id="color" placeholder="Favorite Color"></input><br>
 		<button onclick="create()">Create Profile</button><button onclick="remember()">Remember Profile</button>
 		<div id="outputDiv5"></div>
-
+		
+		<h3>Style</h3>
+		<p>Give this box your own style:</p>
+		<input type="text" id="boxColor" placeholder="Color"></input><br>
+		<input type="text" id="width" placeholder="Width"></input><br>
+		<input type="text" id="height" placeholder="Height"></input><br>
+		<input type="text" id="rounded" placeholder="Edge Diameter"></input><br>
+		<button onclick="styleIt()">Style It</button><button onclick="rememberStyle()">Remember Style</button><br><br>
+		<div id="storageStyle"></div>
 
 	<footer>
 		<p>Copyright 2017 - Kailey Dilworth</p>

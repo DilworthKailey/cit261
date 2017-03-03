@@ -87,3 +87,8 @@ footer{
 			90%{background: purple;}
 			100%{background: red;}
 		}
+#storageStyle{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
