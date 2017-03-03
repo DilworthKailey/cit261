@@ -103,13 +103,19 @@
 			width="272" height="288">
 		</div>
 		<br>
-		<canvas id="myCanvas" width="320px" height="90px"
+		<p>Enter your name for a custom message:</p>
+		<input type="text" id="name" onkeyup="setName()" placeholder="Your Name"></input><br>
+		<canvas id="myCanvas" width="900" height="90px"
 		style="border:2px solid #000000;">
 		Your browser does not support the HTML5 canvas tag.
 		</canvas>
 		<br>
 		
 		<script type="text/javascript">
+			function setName(){
+				var name = document.getElementById('name').value;
+				thankYou(name);
+			}
 			function charImage(number) { 
 				
 				var canvas = document.getElementById('characters');
@@ -121,18 +127,23 @@
 				ctx2.drawImage(sprite, 180, 0);
 			
 			}
+			function thankYou(name){
+				var name = document.getElementById('name').value;
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				ctx.font = "30px Arial";
+				var grd = ctx.createRadialGradient(195,20,50,100,60,300);
+				grd.addColorStop(0,"aquamarine");
+				grd.addColorStop(1,"white");
+				
+				ctx.fillStyle = grd;
+				ctx.fillRect(0,0,900,90);
+				ctx.fillStyle = "black";
+				ctx.fillText("Thank You for Visiting, " + name +"!",10,60);
+			}
+			
+			
 
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
-			ctx.font = "30px Arial";
-			var grd = ctx.createRadialGradient(175,50,5,90,60,300);
-			grd.addColorStop(0,"#62a8ea");
-			grd.addColorStop(1,"white");
-
-			ctx.fillStyle = grd;
-			ctx.fillRect(0,0,320,90);
-			ctx.fillStyle = "white";
-			ctx.fillText("Thank You for Visiting!",10,60);
 			
 			
 	</script>
