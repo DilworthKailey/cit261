@@ -20,6 +20,26 @@
 			element.style.width = width;
 			element.style.background = color;
 		}
+		
+		function myFunction3(number){
+		
+			if(number == 1){
+			document.styleSheets[0].addRule("#divAnimation", "animation-iteration-count: infinite;");
+			document.styleSheets[0].addRule("#divAnimation", "-webkit-animation-iteration-count: infinite;");
+			}
+			else{
+			document.styleSheets[0].addRule("#divAnimation", "animation-iteration-count: 0;");
+			document.styleSheets[0].addRule("#divAnimation", "-webkit-animation-iteration-count: 0;");
+			}
+			}
+			
+		function myFunction(){
+			var x = document.createElement('div');
+			x.id = 'divCreate';
+			document.getElementById('goHere').appendChild(x);
+			//var elem = document.getElementById('beGone');
+			//elem.parentNode.removeChild(elem);
+		}
 
 	</script>
 	
@@ -30,28 +50,7 @@
 			background: blue;
 		}
 		
-		#div2{
-			width: 100px;
-			height: 100px;
-			background: orange;
-			animation-name: change;
-			animation-duration: 3s;
-			animation-iteration-count: infinite;
-			animation-direction: alternate;
-			-webkit-animation-direction: alternate;
-			-webkit-animation-iteration-count: infinite;
-			-webkit-animation-name: change;
-			-webkit-animation-duration: 3s;
-			
-		}
-		@keyframes change{
-			20%{background: orange; width: 200px; height: 200px;}
-			40%{background: yellow;}
-			60%{background: green;}
-			80%{background: blue; width: 50px; height: 50px;}
-			90%{background: purple;}
-			100%{background: red;}
-		}
+		
 		
 		#div3{
 			width: 100px;
@@ -61,7 +60,7 @@
 	</style>
 </head>
 
-<body onload="myFunction2()">
+<body>
 	<header>
 	<a href="index.html">
 		<h1>CIT 261 - Kailey Dilworth</h1>
@@ -81,8 +80,12 @@
 		<div id="div3" onmouseover="myFunction2('div3', '200px', '200px', 'aquamarine')" onmouseout="myFunction2('div3', '100px', '100px', 'pink')"></div>
 		
 		<h3>Animation Automatic:</h3>
-		<div id="div2"></div>
-
+		<button onclick='myFunction3("1")'>Start</button><button onclick='myFunction3("2")'>Stop</button>
+		<div id="divAnimation"></div>
+		
+		<h3>Create Animation:</h3>
+		<p id="goHere">Create a new element that will be animated using CSS:</p>
+		<button onclick='myFunction()' id="beGone">Create</button>
 		
 	<footer>
 		<p>Copyright 2017 - Kailey Dilworth</p>

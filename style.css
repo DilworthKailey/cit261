@@ -48,24 +48,42 @@ footer{
 	width: 50px;
 }
 
-.spoilerbutton {
-    display:block;
-    margin:3px 25px;
-    font-size: 14px;
+#divCreate{
+	width: 100px;
+	height: 50px;
+	background: aquamarine;
+	border-radius: 25px;
+	animation-name: fadeIn;
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-duration: 3s;
+    animation-duration: 3s;
+	
 }
-.spoiler {
-    overflow:hidden;
-    background: #f5f5f5;
+
+@keyframes fadeIn{
+	0% {opacity: 0;}
+	100% {opacity: 1;}
 }
-.spoiler > div {
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: margin 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: margin 0.2s ease;
-}
-.spoilerbutton[value="Show Code"] + .spoiler > div {
-    margin-top:-100%;
-}
-.spoilerbutton[value="Hide"] + .spoiler {
-    padding:5px;
-} 
+
+#divAnimation{
+			width: 100px;
+			height: 100px;
+			background: orange;
+			animation-name: change;
+			animation-duration: 3s;
+			animation-iteration-count: 0;
+			animation-direction: alternate;
+			-webkit-animation-direction: alternate;
+			-webkit-animation-iteration-count: 0;
+			-webkit-animation-name: change;
+			-webkit-animation-duration: 3s;
+			
+		}
+@keyframes change{
+			20%{background: orange; width: 200px; height: 200px;}
+			40%{background: yellow;}
+			60%{background: green;}
+			80%{background: blue; width: 50px; height: 50px;}
+			90%{background: purple;}
+			100%{background: red;}
+		}
