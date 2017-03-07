@@ -35,18 +35,46 @@
 			 
 			if (totalMembers == 1){
 				member1 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 1");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(1);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
 			}
 			else if(totalMembers == 2){
 				member2 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 2");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(2);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
 			}
 			else if(totalMembers == 3){
 				member3 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 3");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(3);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
 			}
 			else if(totalMembers == 4){
 				member4 = new character();
-			}
-			else if(totalMembers > 4){
-				document.getElementById('outputDiv2').innerHTML = "You have reached the Maximum Amount of Members."
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 4");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(4);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
+				
+				document.getElementById('memberInput').innerHTML = '';
+				return;
 			}
 			document.getElementById('name').value=''; 
 			document.getElementById('gender').value=''; 
@@ -57,36 +85,34 @@
 		
 		function members(number){
 			chosen = number;
-			if (number == 1 && totalMembers > 0){
+			if (number == 1){
 				document.getElementById('outputDiv').innerHTML = member1.profile();
 			}
-			else if (number == 2 && totalMembers > 1){
+			else if (number == 2){
 				document.getElementById('outputDiv').innerHTML = member2.profile();
 			}
-			else if (number == 3 && totalMembers > 2){
+			else if (number == 3){
 				document.getElementById('outputDiv').innerHTML = member3.profile();
 			}
-			else if (number == 4 && totalMembers > 3){
+			else if (number == 4){
 				document.getElementById('outputDiv').innerHTML = member4.profile();
-			} else{
-				document.getElementById('outputDiv').innerHTML = "You have not yet set this member of your party.";
 			}
 		}
 		
 		function eyeColor(){
-			if (chosen == 1 && totalMembers > 0) {
+			if (chosen == 1) {
 				member1.eyecolor = document.getElementById('eyeColor').value;
 				document.getElementById('outputDiv').innerHTML = member1.profile();
 			}
-			else if (chosen == 2 && totalMembers > 1) {
+			else if (chosen == 2) {
 				member2.eyecolor = document.getElementById('eyeColor').value;
 				document.getElementById('outputDiv').innerHTML = member2.profile();
 			}
-			else if (chosen == 3 && totalMembers > 2) {
+			else if (chosen == 3) {
 				member3.eyecolor = document.getElementById('eyeColor').value;
 				document.getElementById('outputDiv').innerHTML = member3.profile();
 			}
-			else if (chosen == 4 && totalMembers > 3) {
+			else if (chosen == 4) {
 				member4.eyecolor = document.getElementById('eyeColor').value;
 				document.getElementById('outputDiv').innerHTML = member4.profile();
 			}
@@ -96,21 +122,24 @@
 		}
 		
 		function changeName(){
-			if (chosen == 1 && totalMembers > 0) {
+			if (chosen == 1) {
 				member1.changeName(document.getElementById('newName').value);
 				document.getElementById('outputDiv').innerHTML = member1.profile();
 			}
-			else if (chosen == 2 && totalMembers > 1) {
+			else if (chosen == 2) {
 				member2.changeName(document.getElementById('newName').value);
 				document.getElementById('outputDiv').innerHTML = member2.profile();
 			}
-			else if (chosen == 3 && totalMembers > 2) {
+			else if (chosen == 3) {
 				member3.changeName(document.getElementById('newName').value);
 				document.getElementById('outputDiv').innerHTML = member3.profile();
 			}
-			else if (chosen == 4 && totalMembers > 3) {
+			else if (chosen == 4) {
 				member4.changeName(document.getElementById('newName').value);
 				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+			else{
+				document.getElementById('outputDiv2').innerHTML = "You need to select your existing party member first!";
 			}
 		}
 		
@@ -138,12 +167,13 @@
 	<div class="background">
 		<h2>Object Creation Functions, Inheritance, Properties, Methods, and Instantation</h2>
 		<p>Let's create a party of adventurers to aid you in your quest! You can have up to four.</p>
-		<input type="text" id="name" placeholder="Name"></input></br>
-		<input type="text" id="gender" placeholder="Gender"></input></br>
-		<input type="text" id="class" placeholder="Class"></input></br>
-		<input type="text" id="personality" placeholder="Personality"></input></br>
-		<button onclick="addChar()">Add Party Member</button><div id="outputDiv2"></div><br>
-		<button onclick="members(1)">Member 1</button><button onclick="members(2)">Member 2</button><button onclick="members(3)">Member 3</button><button onclick="members(4)">Member 4</button>
+		<div id="memberInput">
+		<input type="text" id="name" placeholder="Name"></input><br>
+		<input type="text" id="gender" placeholder="Gender"></input><br>
+		<input type="text" id="class" placeholder="Class"></input><br>
+		<input type="text" id="personality" placeholder="Personality"></input><br>
+		<button onclick="addChar()" id="button1">Add Party Member</button></div><div id="outputDiv2"></div><br>
+		<div id="outputDiv4"></div>
 		
 		<div id="outputDiv"></div>
 		
